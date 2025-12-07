@@ -4,10 +4,12 @@ import { NavLink } from "react-router";
 import { UserAuthContext } from "../../ContextAPI/AuthContext";
 import { toast } from "react-toastify";
 import GoogleIcon from "@mui/icons-material/Google";
+import useAxios from "../../Hooks/useAxios";
 
 const Register = () => {
   const { registerUser, updateUser, setUser, googleLogin } =
     useContext(UserAuthContext);
+  const axiosInstance = useAxios();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -25,7 +27,18 @@ const Register = () => {
             if (currentUser) {
               setUser({ ...currentUser, displayName: name, photoURL: photo });
               toast.success("User Register Successfully");
-              e.target.reset();
+              axiosInstance
+                .post("/users", { displayName: name, email, photoURL: photo })
+                .then((res) => {
+                  console.log(res);
+                  if (res.data.insertedId) {
+                    e.target.reset();
+                    console.log(res.data);
+                  }
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
             }
           })
           .catch((error) => {

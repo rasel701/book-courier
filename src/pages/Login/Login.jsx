@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Box, Typography, TextField, Button, Link, Stack } from "@mui/material";
-import bgImage from "../../assets/2351004.jpg";
+
 import { NavLink } from "react-router";
 import { UserAuthContext } from "../../ContextAPI/AuthContext";
 import { toast } from "react-toastify";

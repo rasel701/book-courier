@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Books from "../pages/Books/Books";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import BookDetails from "../pages/BookDetails/BookDetails";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/books",
         Component: Books,
+      },
+      {
+        path: "/book-details/:id",
+        element: <BookDetails />,
       },
       {
         path: "/dashboard",
