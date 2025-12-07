@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router";
 
 const Book = ({ book }) => {
-  console.log(book);
   return (
     <div>
       <div className="max-w-sm mx-auto">

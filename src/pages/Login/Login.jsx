@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import { Box, Typography, TextField, Button, Link, Stack } from "@mui/material";
 
-import { NavLink } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { UserAuthContext } from "../../ContextAPI/AuthContext";
 import { toast } from "react-toastify";
 import GoogleIcon from "@mui/icons-material/Google";
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
   const { loginUser, googleLogin } = useContext(UserAuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,6 +22,7 @@ const Login = () => {
         if (res.user) {
           toast.success("User login successfully");
           e.target.reset();
+          navigate(location?.state || "/");
         }
       })
       .catch((error) => {
@@ -31,6 +35,7 @@ const Login = () => {
     googleLogin()
       .then((res) => {
         if (res.user) {
+          navigate(location?.state || "/");
           toast.success("Google login successfully !");
         }
       })
@@ -101,7 +106,7 @@ const Login = () => {
             <Typography textAlign="center" className="text-gray-600">
               OR
             </Typography>
-            <NavLink to="/register">
+            <NavLink to="/register" state={location?.state}>
               <Button variant="outlined" fullWidth>
                 REGISTER
               </Button>

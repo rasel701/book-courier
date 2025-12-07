@@ -1,12 +1,15 @@
 import { Box, Typography, TextField, Button, Stack } from "@mui/material";
 import { useContext } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { UserAuthContext } from "../../ContextAPI/AuthContext";
 import { toast } from "react-toastify";
 import GoogleIcon from "@mui/icons-material/Google";
 import useAxios from "../../Hooks/useAxios";
 
 const Register = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
   const { registerUser, updateUser, setUser, googleLogin } =
     useContext(UserAuthContext);
   const axiosInstance = useAxios();
@@ -32,6 +35,7 @@ const Register = () => {
                 .then((res) => {
                   console.log(res);
                   if (res.data.insertedId) {
+                    navigate(location?.state);
                     e.target.reset();
                     console.log(res.data);
                   }
@@ -55,6 +59,7 @@ const Register = () => {
       .then((res) => {
         if (res.user) {
           toast.success("Google login successfully !");
+          navigate(location?.state);
         }
       })
       .catch((error) => {
