@@ -3,6 +3,7 @@ import RepeatOnIcon from "@mui/icons-material/RepeatOn";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
 import { Link, Outlet } from "react-router";
 import HomeFilledIcon from "@mui/icons-material/HomeFilled";
+import ReceiptIcon from "@mui/icons-material/Receipt";
 
 const DashboardLayout = () => {
   return (
@@ -52,6 +53,12 @@ const DashboardLayout = () => {
                 <Link to={"/dashboard/my-orders"}>
                   <Inventory2Icon />
                   <span className="is-drawer-close:hidden">My Order</span>
+                </Link>
+              </li>
+              <li>
+                <Link to={"/dashboard/invoices"}>
+                  <ReceiptIcon />
+                  <span className="is-drawer-close:hidden">Invoices</span>
                 </Link>
               </li>
 

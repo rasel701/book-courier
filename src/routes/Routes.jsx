@@ -11,6 +11,7 @@ import DashboardHome from "../DashboardLayout/DashboardHome";
 import MyOrders from "../pages/MyOrders/MyOrders";
 import PaymentSuccess from "../pages/PaymentSuccess/PaymentSuccess";
 import PaymentCancel from "../pages/PaymentCancel/PaymentCancel";
+import Invoices from "../pages/Invoices/Invoices";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "payment-cancel",
         element: <PaymentCancel />,
+      },
+      {
+        path: "invoices",
+        element: <Invoices />,
       },
     ],
   },
