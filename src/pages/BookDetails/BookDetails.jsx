@@ -53,6 +53,7 @@ const BookDetails = () => {
 
     const orderDetails = {
       bookId: id,
+      book_Name: book.bookName,
       name,
       email,
       mobile,

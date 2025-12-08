@@ -58,8 +58,22 @@ const Register = () => {
     googleLogin()
       .then((res) => {
         if (res.user) {
-          toast.success("Google login successfully !");
-          navigate(location?.state);
+          axiosInstance
+            .post("/users", {
+              displayName: res.user.displayName,
+              email: res.user.email,
+              photoURL: res.user.photoURL,
+            })
+            .then((res) => {
+              console.log(res);
+
+              toast.success("Google login successfully !");
+              navigate(location?.state);
+              console.log(res.data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }
       })
       .catch((error) => {

@@ -6,6 +6,9 @@ import Register from "../pages/Register/Register";
 import Books from "../pages/Books/Books";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import BookDetails from "../pages/BookDetails/BookDetails";
+import DashboardLayout from "./../DashboardLayout/DashboardLayout";
+import DashboardHome from "../DashboardLayout/DashboardHome";
+import MyOrders from "../pages/MyOrders/MyOrders";
 
 const router = createBrowserRouter([
   {
@@ -32,9 +35,19 @@ const router = createBrowserRouter([
         path: "/book-details/:id",
         element: <BookDetails />,
       },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
       {
-        path: "/dashboard",
-        Component: Dashboard,
+        index: true,
+        Component: DashboardHome,
+      },
+      {
+        path: "my-orders",
+        element: <MyOrders />,
       },
     ],
   },
