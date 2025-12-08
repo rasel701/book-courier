@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { UserAuthContext } from "../../ContextAPI/AuthContext";
@@ -67,6 +67,15 @@ const MyOrders = () => {
       field: "paymentStatus",
       headerName: "payment status",
       width: 200,
+      renderCell: (params) => (
+        <span
+          className={`${
+            params.value === "paid" && "text-lg font-bold text-green-500"
+          }`}
+        >
+          {params.value}
+        </span>
+      ),
     },
 
     {
@@ -77,14 +86,20 @@ const MyOrders = () => {
         <>
           <>
             <button
-              disabled={params.row.status === "cancel"}
+              disabled={
+                params.row.status === "cancel" ||
+                params.row.paymentStatus === "paid"
+              }
               className="btn btn-error mx-3"
               onClick={() => handleCancel(params.row)}
             >
               Cancel
             </button>
             <button
-              disabled={params.row.status === "cancel"}
+              disabled={
+                params.row.status === "cancel" ||
+                params.row.paymentStatus === "paid"
+              }
               className="btn btn-primary"
               onClick={() => handlePayNow(params.row)}
             >
@@ -106,6 +121,8 @@ const MyOrders = () => {
     paymentStatus: item.paymentStatus,
     bookId: item.bookId,
     orderId: item._id,
+    price: item.price,
+    email: item.email,
   }));
 
   const handleCancel = (orderItem) => {
@@ -123,8 +140,17 @@ const MyOrders = () => {
       });
   };
 
-  const handlePayNow = (id) => {
-    console.log("Pay Now for:", id);
+  const handlePayNow = (orderItem) => {
+    console.log("Pay Now for:", orderItem);
+    axiosSecure
+      .post("/create-checkout-session", orderItem)
+      .then((res) => {
+        console.log(res.data);
+        window.location.assign(res.data.url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   if (isLoading) {

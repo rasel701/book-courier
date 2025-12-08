@@ -61,6 +61,7 @@ const BookDetails = () => {
       status: "pending",
       paymentStatus: "unpaid",
       createdAt: new Date(),
+      price: book.price,
     };
 
     axiosInstance

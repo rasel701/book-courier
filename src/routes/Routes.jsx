@@ -9,6 +9,8 @@ import BookDetails from "../pages/BookDetails/BookDetails";
 import DashboardLayout from "./../DashboardLayout/DashboardLayout";
 import DashboardHome from "../DashboardLayout/DashboardHome";
 import MyOrders from "../pages/MyOrders/MyOrders";
+import PaymentSuccess from "../pages/PaymentSuccess/PaymentSuccess";
+import PaymentCancel from "../pages/PaymentCancel/PaymentCancel";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
       {
         path: "my-orders",
         element: <MyOrders />,
+      },
+      {
+        path: "payment-success",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "payment-cancel",
+        element: <PaymentCancel />,
       },
     ],
   },
