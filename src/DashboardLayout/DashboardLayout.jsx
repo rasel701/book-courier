@@ -4,6 +4,7 @@ import Inventory2Icon from "@mui/icons-material/Inventory2";
 import { Link, Outlet } from "react-router";
 import HomeFilledIcon from "@mui/icons-material/HomeFilled";
 import ReceiptIcon from "@mui/icons-material/Receipt";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 const DashboardLayout = () => {
   return (
@@ -59,6 +60,12 @@ const DashboardLayout = () => {
                 <Link to={"/dashboard/invoices"}>
                   <ReceiptIcon />
                   <span className="is-drawer-close:hidden">Invoices</span>
+                </Link>
+              </li>
+              <li>
+                <Link to={"/dashboard/my-profile"}>
+                  <AccountBoxIcon />
+                  <span className="is-drawer-close:hidden">My Profile</span>
                 </Link>
               </li>
 

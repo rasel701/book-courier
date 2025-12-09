@@ -9,9 +9,9 @@ const Invoices = () => {
   const { user } = useContext(UserAuthContext);
 
   const { data: paymentInfo = [] } = useQuery({
-    queryKey: ["payment-book", user.email],
+    queryKey: ["payment-book", user?.email],
     queryFn: async () => {
-      const res = await axiosInstance.get(`/payment-book/${user.email}`);
+      const res = await axiosInstance.get(`/payment-book/${user?.email}`);
       return res.data;
     },
   });
@@ -19,34 +19,29 @@ const Invoices = () => {
   console.log(paymentInfo);
 
   return (
-    <div>
-      <h2>This is a invoices page</h2>
-      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th></th>
-              <th>Book-Name</th>
-              <th>Amount</th>
-              <th>Payment ID</th>
-              <th>Payment Add</th>
+    <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 dark:bg-base-200">
+      <table className="table table-zebra">
+        <thead className="bg-base-300">
+          <tr>
+            <th></th>
+            <th>Book-Name</th>
+            <th>Amount</th>
+            <th>Payment ID</th>
+            <th>Payment Add</th>
+          </tr>
+        </thead>
+        <tbody>
+          {paymentInfo.map((payment, index) => (
+            <tr key={payment._id}>
+              <th>{index + 1}</th>
+              <td>{payment?.book_Name}</td>
+              <td>{payment?.price}</td>
+              <td>{payment?.paymentId}</td>
+              <td>{new Date(payment?.payment_add).toLocaleString()}</td>
             </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            {paymentInfo.map((payment, index) => (
-              <tr key={payment._id}>
-                <th>{index + 1}</th>
-                <td>{payment?.book_Name}</td>
-                <td>{payment?.price}</td>
-                <td>{payment?.paymentId}</td>
-                <td>{new Date(payment?.payment_add).toLocaleString()}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
