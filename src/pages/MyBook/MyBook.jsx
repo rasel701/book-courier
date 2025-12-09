@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import { DataGrid } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import { toast } from "react-toastify";
+import { Link } from "react-router";
+import Loading from "../../Components/Loading";
 
 const paginationModel = { page: 0, pageSize: 5 };
 
@@ -52,6 +54,12 @@ const MyBook = () => {
         <span>{new Date(params.value).toLocaleString()}</span>
       ),
     },
+    {
+      field: "price",
+      headerName: "Price",
+      width: 200,
+      renderCell: (params) => <span>$ {params?.value}</span>,
+    },
 
     {
       field: "actions",
@@ -71,7 +79,12 @@ const MyBook = () => {
               {params.row.status === "published" ? "Unpublished" : "Published"}
             </button>
 
-            <button className="btn btn-primary mx-2">Edid</button>
+            <Link
+              to={`/dashboard/book-edit/${params.row.bookId}`}
+              className="btn btn-primary mx-2"
+            >
+              Edit
+            </Link>
           </>
         </>
       ),
@@ -84,6 +97,7 @@ const MyBook = () => {
     image: item.image,
     createdAt: item.createdAt,
     status: item.status,
+    price: item.price,
     bookId: item._id,
   }));
 
@@ -95,10 +109,14 @@ const MyBook = () => {
     }
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div>
       <h2>This is a my book route</h2>
-      <Paper sx={{ height: 400, width: "100%" }}>
+      <Paper sx={{ height: 500, width: "100%" }}>
         <DataGrid
           rows={rows}
           columns={columns}

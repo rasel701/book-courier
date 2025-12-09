@@ -17,6 +17,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import AddBook from "../pages/AddBook/AddBook";
 import MyBook from "../pages/MyBook/MyBook";
 import OrderList from "../pages/OrderList/OrderList";
+import BookEdit from "../pages/BookEdit/BookEdit";
 
 const router = createBrowserRouter([
   {
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
       {
         path: "order-list",
         element: <OrderList />,
+      },
+      {
+        path: "book-edit/:id",
+        element: <BookEdit />,
       },
     ],
   },
