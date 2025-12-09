@@ -13,6 +13,7 @@ import PaymentSuccess from "../pages/PaymentSuccess/PaymentSuccess";
 import PaymentCancel from "../pages/PaymentCancel/PaymentCancel";
 import Invoices from "../pages/Invoices/Invoices";
 import MyProfile from "../pages/MyProfile/MyProfile";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true,

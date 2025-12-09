@@ -5,8 +5,15 @@ import { Link, Outlet } from "react-router";
 import HomeFilledIcon from "@mui/icons-material/HomeFilled";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import DashboardCustomizeIcon from "@mui/icons-material/DashboardCustomize";
+import useRole from "../Hooks/useRole";
 
+import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 const DashboardLayout = () => {
+  const { role } = useRole();
+
   return (
     <>
       <div className="drawer lg:drawer-open">
@@ -47,27 +54,65 @@ const DashboardLayout = () => {
                 >
                   {/* Home icon */}
                   <HomeFilledIcon />
-                  <span className="is-drawer-close:hidden">Homepage</span>
+                  <span className="is-drawer-close:hidden"> Home</span>
                 </Link>
               </li>
               <li>
-                <Link to={"/dashboard/my-orders"}>
-                  <Inventory2Icon />
-                  <span className="is-drawer-close:hidden">My Order</span>
+                <Link
+                  to={"/dashboard"}
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Homepage"
+                >
+                  {/* Home icon */}
+                  <DashboardCustomizeIcon />
+                  <span className="is-drawer-close:hidden">Dashboard Home</span>
                 </Link>
               </li>
-              <li>
-                <Link to={"/dashboard/invoices"}>
-                  <ReceiptIcon />
-                  <span className="is-drawer-close:hidden">Invoices</span>
-                </Link>
-              </li>
-              <li>
-                <Link to={"/dashboard/my-profile"}>
-                  <AccountBoxIcon />
-                  <span className="is-drawer-close:hidden">My Profile</span>
-                </Link>
-              </li>
+              {role.role === "user" && (
+                <>
+                  <li>
+                    <Link to={"/dashboard/my-orders"}>
+                      <Inventory2Icon />
+                      <span className="is-drawer-close:hidden">My Order</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/dashboard/invoices"}>
+                      <ReceiptIcon />
+                      <span className="is-drawer-close:hidden">Invoices</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/dashboard/my-profile"}>
+                      <AccountBoxIcon />
+                      <span className="is-drawer-close:hidden">My Profile</span>
+                    </Link>
+                  </li>
+                </>
+              )}
+
+              {role.role === "librarian" && (
+                <>
+                  <li>
+                    <Link to={"/dashboard/my-orders"}>
+                      <LibraryAddCheckIcon />
+                      <span className="is-drawer-close:hidden">Add Book</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/dashboard/my-orders"}>
+                      <MenuBookIcon />
+                      <span className="is-drawer-close:hidden">My Book</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/dashboard/my-orders"}>
+                      <ReceiptLongIcon />
+                      <span className="is-drawer-close:hidden">Orders</span>
+                    </Link>
+                  </li>
+                </>
+              )}
 
               {/* List item */}
               <li>
