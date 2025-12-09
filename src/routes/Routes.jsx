@@ -14,6 +14,9 @@ import PaymentCancel from "../pages/PaymentCancel/PaymentCancel";
 import Invoices from "../pages/Invoices/Invoices";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import ProtectedRoute from "./ProtectedRoute";
+import AddBook from "../pages/AddBook/AddBook";
+import MyBook from "../pages/MyBook/MyBook";
+import OrderList from "../pages/OrderList/OrderList";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +76,20 @@ const router = createBrowserRouter([
       {
         path: "my-profile",
         element: <MyProfile />,
+      },
+
+      // librarian route
+      {
+        path: "add-book",
+        element: <AddBook />,
+      },
+      {
+        path: "my-book",
+        element: <MyBook />,
+      },
+      {
+        path: "order-list",
+        element: <OrderList />,
       },
     ],
   },

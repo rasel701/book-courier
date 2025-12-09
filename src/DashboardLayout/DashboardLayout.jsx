@@ -94,19 +94,19 @@ const DashboardLayout = () => {
               {role.role === "librarian" && (
                 <>
                   <li>
-                    <Link to={"/dashboard/my-orders"}>
+                    <Link to={"/dashboard/add-book"}>
                       <LibraryAddCheckIcon />
                       <span className="is-drawer-close:hidden">Add Book</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/dashboard/my-orders"}>
+                    <Link to={"/dashboard/my-book"}>
                       <MenuBookIcon />
-                      <span className="is-drawer-close:hidden">My Book</span>
+                      <span className="is-drawer-close:hidden">My Books</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/dashboard/my-orders"}>
+                    <Link to={"/dashboard/order-list"}>
                       <ReceiptLongIcon />
                       <span className="is-drawer-close:hidden">Orders</span>
                     </Link>
