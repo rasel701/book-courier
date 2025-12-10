@@ -3,19 +3,24 @@ import useAxios from "../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import Loading from "./Loading";
 
 const ServiceCenter = () => {
   const axiosInstance = useAxios();
   const position = [23.8103, 90.4125];
 
   const { data: service = [], isLoading } = useQuery({
-    queryKey: [],
+    queryKey: ["serviceSenter"],
     queryFn: async () => {
       const res = await axiosInstance.get("/service-center");
       return res.data;
     },
   });
   console.log(service);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>
@@ -33,8 +38,8 @@ const ServiceCenter = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {service.map((item, index) => (
-            <Marker key={item._id} position={[item.latitude, item.longitude]}>
+          {service?.map((item, index) => (
+            <Marker key={item._id} position={[item?.latitude, item?.longitude]}>
               <Popup>
                 <div className="p-2 max-w-xs">
                   <h3 className="text-lg font-semibold text-blue-600">

@@ -4,12 +4,14 @@ import { Navigate, useLocation, useNavigate } from "react-router";
 import Loading from "../Components/Loading";
 
 const ProtectedRoute = ({ children }) => {
-  const { user, isLoading } = useContext(UserAuthContext);
+  const { user, loading } = useContext(UserAuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
+  console.log(loading);
+
   console.log(location);
-  if (isLoading) {
+  if (loading) {
     return <Loading />;
   }
 

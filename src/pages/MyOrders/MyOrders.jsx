@@ -115,7 +115,7 @@ const MyOrders = () => {
 
   const rows = myorders.map((item, index) => ({
     id: index + 1,
-    title: item.book_Name || "No Book",
+    title: item.book_Name,
     orderDate: item.createdAt,
     status: item.status,
     paymentStatus: item.paymentStatus,
