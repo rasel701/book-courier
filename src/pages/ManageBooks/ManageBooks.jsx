@@ -3,8 +3,9 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { DataGrid } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
+import Loading from "../../Components/Loading";
 
-const paginationModel = { page: 0, pageSize: 10 };
+const paginationModel = { page: 0, pageSize: 6 };
 const ManageBooks = () => {
   const axiosSecure = useAxiosSecure();
 
@@ -19,8 +20,6 @@ const ManageBooks = () => {
       return res.data;
     },
   });
-
-  console.log(allBook);
 
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
@@ -78,7 +77,7 @@ const ManageBooks = () => {
               {params.row.status === "published" ? "Unpublished" : "Published"}
             </button>
             <button
-              onClick={handleDeleteBtn(params.row)}
+              onClick={() => handleDeleteBtn(params.row)}
               className="btn btn-secondary mx-5"
             >
               Delete
@@ -108,20 +107,26 @@ const ManageBooks = () => {
     }
   };
 
-  const handleDeleteBtn = (bookInfo) => {
-    console.log(bookInfo);
+  const handleDeleteBtn = async (bookInfo) => {
+    const res = await axiosSecure.delete(`/book-delete/${bookInfo.bookId}`);
+    console.log(res.data);
+    refetch();
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>
       {" "}
-      <Paper sx={{ height: 900, width: "100%" }}>
+      <Paper sx={{ height: 600, width: "100%" }}>
         <DataGrid
           rows={rows}
           columns={columns}
           rowHeight={80}
           initialState={{ pagination: { paginationModel } }}
-          pageSizeOptions={[10, 10]}
+          pageSizeOptions={[6, 10]}
           checkboxSelection
           sx={{ border: 1 }}
         />
