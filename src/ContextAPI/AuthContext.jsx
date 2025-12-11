@@ -18,15 +18,15 @@ const AuthContext = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unSubscription = onAuthStateChanged(auth, (currentUser) => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
     });
 
-    return () => {
-      unSubscription();
-    };
+    return () => unSubscribe(); // cleanup
   }, []);
+
+  console.log(user);
 
   const registerUser = (email, password) => {
     setLoading(true);

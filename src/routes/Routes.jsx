@@ -18,6 +18,8 @@ import AddBook from "../pages/AddBook/AddBook";
 import MyBook from "../pages/MyBook/MyBook";
 import OrderList from "../pages/OrderList/OrderList";
 import BookEdit from "../pages/BookEdit/BookEdit";
+import AllUser from "../pages/AllUser/AllUser";
+import ManageBooks from "../pages/ManageBooks/ManageBooks";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +97,17 @@ const router = createBrowserRouter([
       {
         path: "book-edit/:id",
         element: <BookEdit />,
+      },
+
+      // Admin route
+
+      {
+        path: "all-users",
+        element: <AllUser />,
+      },
+      {
+        path: "manage-books",
+        element: <ManageBooks />,
       },
     ],
   },

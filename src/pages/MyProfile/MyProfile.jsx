@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const MyProfile = () => {
   const { user, updateUser, setUser } = useContext(UserAuthContext);
   const { role } = useRole();
-  console.log(role?._id);
+  console.log(user?.photoURL);
 
   const axiosInstance = useAxios();
 

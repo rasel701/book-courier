@@ -7,10 +7,11 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import DashboardCustomizeIcon from "@mui/icons-material/DashboardCustomize";
 import useRole from "../Hooks/useRole";
-
+import PeopleIcon from "@mui/icons-material/People";
 import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
+import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 const DashboardLayout = () => {
   const { role } = useRole();
 
@@ -109,6 +110,31 @@ const DashboardLayout = () => {
                     <Link to={"/dashboard/order-list"}>
                       <ReceiptLongIcon />
                       <span className="is-drawer-close:hidden">Orders</span>
+                    </Link>
+                  </li>
+                </>
+              )}
+
+              {role.role === "admin" && (
+                <>
+                  <li>
+                    <Link to={"/dashboard/all-users"}>
+                      <PeopleIcon />
+                      <span className="is-drawer-close:hidden">All Users</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/dashboard/manage-books"}>
+                      <LibraryBooksIcon />
+                      <span className="is-drawer-close:hidden">
+                        Manage Books
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/dashboard/my-profile"}>
+                      <AccountBoxIcon />
+                      <span className="is-drawer-close:hidden">My Profile</span>
                     </Link>
                   </li>
                 </>
