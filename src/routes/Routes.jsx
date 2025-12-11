@@ -20,6 +20,7 @@ import OrderList from "../pages/OrderList/OrderList";
 import BookEdit from "../pages/BookEdit/BookEdit";
 import AllUser from "../pages/AllUser/AllUser";
 import ManageBooks from "../pages/ManageBooks/ManageBooks";
+import WishList from "../pages/WishList/WishList";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "my-profile",
         element: <MyProfile />,
+      },
+      {
+        path: "wish-list",
+        element: <WishList />,
       },
 
       // librarian route

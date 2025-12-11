@@ -136,6 +136,21 @@ const BookDetails = () => {
     avaRating = (sum / allreviews.length).toFixed(1);
   }
 
+  const handleWishListBtn = async () => {
+    if (!user) {
+      toast.error("Please login in");
+      navigate("/login", { state: location.pathname });
+      return;
+    }
+    const res = await axiosInstance.patch(
+      `/user-wishlist/${user?.email}`,
+      book
+    );
+    if (res.data.modifiedCount > 0) {
+      toast.success("Book added to wishlist!");
+    }
+  };
+
   return (
     <div>
       <Modal
@@ -288,6 +303,12 @@ const BookDetails = () => {
                 className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition duration-300"
               >
                 Order Now
+              </button>
+              <button
+                onClick={handleWishListBtn}
+                className="btn btn-secondary mx-9"
+              >
+                WishList
               </button>
             </div>
           </div>

@@ -12,6 +12,7 @@ import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 const DashboardLayout = () => {
   const { role } = useRole();
 
@@ -87,6 +88,12 @@ const DashboardLayout = () => {
                     <Link to={"/dashboard/my-profile"}>
                       <AccountBoxIcon />
                       <span className="is-drawer-close:hidden">My Profile</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/dashboard/wish-list"}>
+                      <BookmarkAddedIcon />
+                      <span className="is-drawer-close:hidden">Wish List</span>
                     </Link>
                   </li>
                 </>
