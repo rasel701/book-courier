@@ -90,7 +90,12 @@ const MyOrders = () => {
                 params.row.status === "cancel" ||
                 params.row.paymentStatus === "paid"
               }
-              className="btn btn-error mx-3"
+              className={`btn mx-3 ${
+                params.row.status === "cancel" ||
+                params.row.paymentStatus === "paid"
+                  ? "opacity-70 cursor-not-allowed bg-gray-500 text-white"
+                  : "btn-primary"
+              }`}
               onClick={() => handleCancel(params.row)}
             >
               Cancel
@@ -100,7 +105,12 @@ const MyOrders = () => {
                 params.row.status === "cancel" ||
                 params.row.paymentStatus === "paid"
               }
-              className="btn btn-primary"
+              className={`btn mx-3 ${
+                params.row.status === "cancel" ||
+                params.row.paymentStatus === "paid"
+                  ? "opacity-70 cursor-not-allowed bg-gray-500 text-white"
+                  : "btn-primary"
+              }`}
               onClick={() => handlePayNow(params.row)}
             >
               Pay Now

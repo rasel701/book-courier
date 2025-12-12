@@ -129,7 +129,12 @@ const OrderList = () => {
                 params.row.paymentStatus === "paid" ||
                 params.row.orderStatus === "cancel"
               }
-              className="btn btn-primary"
+              className={`btn mx-3 ${
+                params.row.status === "cancel" ||
+                params.row.paymentStatus === "paid"
+                  ? "opacity-70 cursor-not-allowed bg-gray-500 text-white"
+                  : "btn-primary"
+              }`}
             >
               Cancel
             </button>

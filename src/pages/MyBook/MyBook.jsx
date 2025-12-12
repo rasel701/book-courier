@@ -115,7 +115,7 @@ const MyBook = () => {
 
   return (
     <div>
-      <h2>This is a my book route</h2>
+  
       <Paper sx={{ height: 500, width: "100%" }}>
         <DataGrid
           rows={rows}
