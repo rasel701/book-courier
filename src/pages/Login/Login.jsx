@@ -5,11 +5,12 @@ import { NavLink, useLocation, useNavigate } from "react-router";
 import { UserAuthContext } from "../../ContextAPI/AuthContext";
 import { toast } from "react-toastify";
 import GoogleIcon from "@mui/icons-material/Google";
+import useAxios from "../../Hooks/useAxios";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+  const axiosInstance = useAxios();
   const { loginUser, googleLogin } = useContext(UserAuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
@@ -35,8 +36,22 @@ const Login = () => {
     googleLogin()
       .then((res) => {
         if (res.user) {
-          navigate(location?.state || "/");
-          toast.success("Google login successfully !");
+          axiosInstance
+            .post("/users", {
+              displayName: res.user.displayName,
+              email: res.user.email,
+              photoURL: res.user.photoURL,
+            })
+            .then((res) => {
+              console.log(res);
+
+              toast.success("Google login successfully !");
+              navigate(location?.state);
+              console.log(res.data);
+            })
+            .catch((error) => {
+              toast.error(error);
+            });
         }
       })
       .catch((error) => {
