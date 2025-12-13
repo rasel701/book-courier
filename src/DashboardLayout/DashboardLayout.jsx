@@ -30,7 +30,10 @@ const DashboardLayout = () => {
             >
               <RepeatOnIcon color="success" />
             </label>
-            <div className="px-4">User Dashboard</div>
+            <div className="px-4">
+              {role?.role?.charAt(0)?.toUpperCase() + role?.role?.slice(1)}{" "}
+              Dashboard
+            </div>
           </nav>
           {/* Page content here */}
           <div className="p-4">
@@ -63,7 +66,7 @@ const DashboardLayout = () => {
                 <Link
                   to={"/dashboard"}
                   className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="Homepage"
+                  data-tip="Dashboard home"
                 >
                   {/* Home icon */}
                   <DashboardCustomizeIcon />
@@ -72,26 +75,42 @@ const DashboardLayout = () => {
               </li>
               {role.role === "user" && (
                 <>
-                  <li>
-                    <Link to={"/dashboard/my-orders"}>
+                  <li data-tip="My order">
+                    <Link
+                      to={"/dashboard/my-orders"}
+                      data-tip="My order"
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    >
                       <Inventory2Icon />
                       <span className="is-drawer-close:hidden">My Order</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/dashboard/invoices"}>
+                    <Link
+                      to={"/dashboard/invoices"}
+                      data-tip="Invoices"
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    >
                       <ReceiptIcon />
                       <span className="is-drawer-close:hidden">Invoices</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/dashboard/my-profile"}>
+                    <Link
+                      to={"/dashboard/my-profile"}
+                      data-tip="My profile"
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    >
                       <AccountBoxIcon />
                       <span className="is-drawer-close:hidden">My Profile</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/dashboard/wish-list"}>
+                    <Link
+                      to={"/dashboard/wish-list"}
+                      data-tip="Wish list"
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    >
                       <BookmarkAddedIcon />
                       <span className="is-drawer-close:hidden">Wish List</span>
                     </Link>
@@ -102,19 +121,31 @@ const DashboardLayout = () => {
               {role.role === "librarian" && (
                 <>
                   <li>
-                    <Link to={"/dashboard/add-book"}>
+                    <Link
+                      to={"/dashboard/add-book"}
+                      data-tip="Add book"
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    >
                       <LibraryAddCheckIcon />
                       <span className="is-drawer-close:hidden">Add Book</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/dashboard/my-book"}>
+                    <Link
+                      to={"/dashboard/my-book"}
+                      data-tip="My books"
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    >
                       <MenuBookIcon />
                       <span className="is-drawer-close:hidden">My Books</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/dashboard/order-list"}>
+                    <Link
+                      to={"/dashboard/order-list"}
+                      data-tip="Orders"
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    >
                       <ReceiptLongIcon />
                       <span className="is-drawer-close:hidden">Orders</span>
                     </Link>
@@ -125,13 +156,21 @@ const DashboardLayout = () => {
               {role.role === "admin" && (
                 <>
                   <li>
-                    <Link to={"/dashboard/all-users"}>
+                    <Link
+                      to={"/dashboard/all-users"}
+                      data-tip="All users"
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    >
                       <PeopleIcon />
                       <span className="is-drawer-close:hidden">All Users</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/dashboard/manage-books"}>
+                    <Link
+                      to={"/dashboard/manage-books"}
+                      data-tip="Manage books"
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    >
                       <LibraryBooksIcon />
                       <span className="is-drawer-close:hidden">
                         Manage Books
@@ -139,39 +178,17 @@ const DashboardLayout = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/dashboard/my-profile"}>
+                    <Link
+                      to={"/dashboard/my-profile"}
+                      data-tip="My profile"
+                      className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    >
                       <AccountBoxIcon />
                       <span className="is-drawer-close:hidden">My Profile</span>
                     </Link>
                   </li>
                 </>
               )}
-
-              {/* List item */}
-              <li>
-                <button
-                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="Settings"
-                >
-                  {/* Settings icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                    strokeWidth="2"
-                    fill="none"
-                    stroke="currentColor"
-                    className="my-1.5 inline-block size-4"
-                  >
-                    <path d="M20 7h-9"></path>
-                    <path d="M14 17H5"></path>
-                    <circle cx="17" cy="17" r="3"></circle>
-                    <circle cx="7" cy="7" r="3"></circle>
-                  </svg>
-                  <span className="is-drawer-close:hidden">Settings</span>
-                </button>
-              </li>
             </ul>
           </div>
         </div>

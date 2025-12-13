@@ -14,6 +14,8 @@ const Navber = () => {
   const { user, logoutUser } = useContext(UserAuthContext);
   const { theme, toggleTheme } = useContext(ThemeContext);
 
+  console.log(user);
+
   const [checked, setChecked] = useState(theme === "dark");
 
   useEffect(() => {

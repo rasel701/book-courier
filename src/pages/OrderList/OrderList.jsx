@@ -13,7 +13,7 @@ const paginationModel = { page: 0, pageSize: 5 };
 
 const OrderList = () => {
   const { role } = useRole();
-  console.log(role);
+
   const axiosSecure = useAxiosSecure();
 
   const {
@@ -92,7 +92,6 @@ const OrderList = () => {
         } else if (status === "shipped") {
           options = ["shipped", "delivered"];
         } else {
-          // delivered হলে dropdown না দেখিয়ে শুধু text দেখাবে
           return <span>{status}</span>;
         }
 

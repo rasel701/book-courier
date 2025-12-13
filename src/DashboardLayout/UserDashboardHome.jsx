@@ -11,6 +11,7 @@ const UserDashboardHome = () => {
   const {
     data: books = {},
     isLoading,
+    refetch,
     isError,
   } = useQuery({
     queryKey: ["freeBook"],
@@ -34,8 +35,15 @@ const UserDashboardHome = () => {
       <div className="text-center py-20 text-red-500 font-semibold text-xl">
         Error fetching books. Please try again later.
       </div>
+      
     );
   }
+
+  const hane =()=>{
+    refetch()
+  }
+
+  
 
   return (
     <div>

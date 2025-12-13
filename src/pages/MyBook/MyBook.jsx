@@ -115,7 +115,6 @@ const MyBook = () => {
 
   return (
     <div>
-  
       <Paper sx={{ height: 500, width: "100%" }}>
         <DataGrid
           rows={rows}
