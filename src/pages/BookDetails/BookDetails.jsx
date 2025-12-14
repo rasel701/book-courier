@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import { Rating, Stack, TextField } from "@mui/material";
 import { UserAuthContext } from "../../ContextAPI/AuthContext";
 import { toast } from "react-toastify";
+import Loading from "../../Components/Loading";
 
 const style = {
   position: "absolute",
@@ -29,7 +30,11 @@ const BookDetails = () => {
   const navigate = useNavigate();
   const axiosInstance = useAxios();
 
-  const { data: book = {}, refetch } = useQuery({
+  const {
+    data: book = {},
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["book", id],
     queryFn: async () => {
       const res = await axiosInstance.get(`/books/${id}`);
@@ -150,6 +155,10 @@ const BookDetails = () => {
       toast.success("Book added to wishlist!");
     }
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>

@@ -2,17 +2,22 @@ import React from "react";
 import useAxios from "../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import Book from "./Book";
+import Loading from "./Loading";
 
 const LatestBooks = () => {
   const axiosInstance = useAxios();
 
-  const { data: books = [] } = useQuery({
+  const { data: books = [], isLoading } = useQuery({
     queryKey: ["books"],
     queryFn: async () => {
       const res = await axiosInstance.get(`/books`);
       return res.data;
     },
   });
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>

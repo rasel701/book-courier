@@ -4,14 +4,13 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyACw4U6Us-yBh_0hVGrEwjb191JE74pklM",
-  authDomain: "book-courier-7c825.firebaseapp.com",
-  projectId: "book-courier-7c825",
-  storageBucket: "book-courier-7c825.firebasestorage.app",
-  messagingSenderId: "629406744188",
-  appId: "1:629406744188:web:3e3a6e96cfa452f53a53f9",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase

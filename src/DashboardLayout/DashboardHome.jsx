@@ -19,7 +19,9 @@ const DashboardHome = () => {
     return <LibrarianDashboardHome />;
   }
 
-  return <UserDashboardHome />;
+  if (role?.role === "user") {
+    return <UserDashboardHome />;
+  }
 };
 
 export default DashboardHome;

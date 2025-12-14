@@ -3,20 +3,29 @@ import useAxios from "../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
 import Loading from "./Loading";
+
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 const ServiceCenter = () => {
   const axiosInstance = useAxios();
   const position = [23.8103, 90.4125];
-
   const { data: service = [], isLoading } = useQuery({
-    queryKey: ["serviceSenter"],
+    queryKey: ["serviceCenter"],
     queryFn: async () => {
       const res = await axiosInstance.get("/service-center");
       return res.data;
     },
   });
-  console.log(service);
 
   if (isLoading) {
     return <Loading />;
@@ -38,7 +47,8 @@ const ServiceCenter = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {service?.map((item, index) => (
+
+          {service?.map((item) => (
             <Marker key={item._id} position={[item?.latitude, item?.longitude]}>
               <Popup>
                 <div className="p-2 max-w-xs">
@@ -49,7 +59,7 @@ const ServiceCenter = () => {
                     <span className="font-medium">City:</span> {item.city}
                   </p>
                   <p className="mt-2 text-sm text-gray-500 italic">
-                    Fast & reliable book delivery by BookCourier! 📚
+                    Fast & reliable book delivery by BookCourier!
                   </p>
                 </div>
               </Popup>

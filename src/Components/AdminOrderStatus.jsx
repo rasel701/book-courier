@@ -67,7 +67,7 @@ const AdminOrderStatus = () => {
               data={chartData}
               dataKey="value"
               nameKey="name"
-              innerRadius={70} // 👈 Doughnut style
+              innerRadius={70} 
               outerRadius={110}
               label={({ name, value }) => `${name} (${value})`}
             >

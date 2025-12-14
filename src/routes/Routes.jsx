@@ -21,11 +21,16 @@ import BookEdit from "../pages/BookEdit/BookEdit";
 import AllUser from "../pages/AllUser/AllUser";
 import ManageBooks from "../pages/ManageBooks/ManageBooks";
 import WishList from "../pages/WishList/WishList";
+import AdminProtected from "./AdminProtected";
+import LibrarianProtected from "./LibrarianProtected";
+import Loading from "../Components/Loading";
+import UserProtect from "./UserProtect";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainRoot,
+    hydrateFallbackElement: <Loading />,
     children: [
       {
         index: true,
@@ -63,19 +68,36 @@ const router = createBrowserRouter([
       },
       {
         path: "my-orders",
-        element: <MyOrders />,
+        element: (
+          <UserProtect>
+            <MyOrders />
+          </UserProtect>
+        ),
       },
       {
         path: "payment-success",
-        element: <PaymentSuccess />,
+        element: (
+          <UserProtect>
+            <PaymentSuccess />
+          </UserProtect>
+        ),
       },
       {
         path: "payment-cancel",
-        element: <PaymentCancel />,
+        element: (
+          <UserProtect>
+            <PaymentCancel />
+          </UserProtect>
+        ),
       },
       {
         path: "invoices",
-        element: <Invoices />,
+        element: (
+          <UserProtect>
+            {" "}
+            <Invoices />
+          </UserProtect>
+        ),
       },
       {
         path: "my-profile",
@@ -83,36 +105,64 @@ const router = createBrowserRouter([
       },
       {
         path: "wish-list",
-        element: <WishList />,
+        element: (
+          <UserProtect>
+            <WishList />
+          </UserProtect>
+        ),
       },
 
       // librarian route
       {
         path: "add-book",
-        element: <AddBook />,
+        element: (
+          <LibrarianProtected>
+            <AddBook />
+          </LibrarianProtected>
+        ),
       },
       {
         path: "my-book",
-        element: <MyBook />,
+        element: (
+          <LibrarianProtected>
+            <MyBook />
+          </LibrarianProtected>
+        ),
       },
       {
         path: "order-list",
-        element: <OrderList />,
+        element: (
+          <LibrarianProtected>
+            <OrderList />
+          </LibrarianProtected>
+        ),
       },
       {
         path: "book-edit/:id",
-        element: <BookEdit />,
+        element: (
+          <LibrarianProtected>
+            <BookEdit />
+          </LibrarianProtected>
+        ),
       },
 
       // Admin route
 
       {
         path: "all-users",
-        element: <AllUser />,
+        element: (
+          <AdminProtected>
+            <AllUser />
+          </AdminProtected>
+        ),
       },
       {
         path: "manage-books",
-        element: <ManageBooks />,
+        element: (
+          <AdminProtected>
+            <ManageBooks />
+          </AdminProtected>
+        ),
       },
     ],
   },

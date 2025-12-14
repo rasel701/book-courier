@@ -16,7 +16,7 @@ const ManageBooks = () => {
   } = useQuery({
     queryKey: ["allBook"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/all-books");
+      const res = await axiosSecure.get("/all-books-admin");
       return res.data;
     },
   });

@@ -84,9 +84,7 @@ const Login = () => {
           >
             Login
           </Typography>
-          <Typography className="text-gray-600" mb={3}>
-            Login to view your board!
-          </Typography>
+
           <Stack spacing={3} component="form" onSubmit={handleLogin}>
             <TextField
               name="email"

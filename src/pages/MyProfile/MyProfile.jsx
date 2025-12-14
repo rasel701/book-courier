@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 const MyProfile = () => {
   const { user, updateUser, setUser } = useContext(UserAuthContext);
   const { role } = useRole();
-  console.log(user?.photoURL);
 
   const axiosInstance = useAxios();
 
@@ -15,14 +14,13 @@ const MyProfile = () => {
     e.preventDefault();
     const name = e.target.name.value;
     const image = e.target.image.value;
-    console.log({ name, image });
+
     updateUser(name, image)
       .then(() => {
         setUser({ ...user, displayName: name, photoURL: image });
         axiosInstance
           .patch(`/user/${role?._id}`, { name, image })
           .then((res) => {
-            console.log(res.data);
             if (res.data.modifiedCount) {
               toast.success("User name and profile image successfully update");
               e.target.reset();
