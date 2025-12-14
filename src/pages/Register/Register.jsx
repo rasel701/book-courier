@@ -16,10 +16,20 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
     const email = e.target.email.value;
     const name = e.target.name.value;
     const password = e.target.password.value;
     const photo = e.target.photo.value;
+
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must be at least 6 characters and include uppercase, lowercase, number, and special character"
+      );
+      return;
+    }
+
     console.log("User Data:", { email, name, password, photo });
     registerUser(email, password)
       .then((res) => {
@@ -35,22 +45,25 @@ const Register = () => {
                 .then((res) => {
                   console.log(res);
                   if (res.data.insertedId) {
-                    navigate(location?.state);
+                    navigate(location?.state || "/");
                     e.target.reset();
                     console.log(res.data);
                   }
                 })
                 .catch((error) => {
                   console.log(error);
+                  toast.error(error.message);
                 });
             }
           })
           .catch((error) => {
             console.log(error);
+            toast.error(error.message);
           });
       })
       .catch((error) => {
         console.log(error);
+        toast.error(error.message);
       });
   };
 
@@ -75,12 +88,12 @@ const Register = () => {
               console.log(res.data);
             })
             .catch((error) => {
-              toast.error(error);
+              toast.error(error.message);
             });
         }
       })
       .catch((error) => {
-        toast.error(error);
+        toast.error(error.message);
       });
   };
 

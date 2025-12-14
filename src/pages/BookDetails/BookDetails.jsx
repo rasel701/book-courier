@@ -26,7 +26,7 @@ const style = {
 const BookDetails = () => {
   const { id } = useParams();
   const { user } = useContext(UserAuthContext);
-
+  const navigate = useNavigate();
   const axiosInstance = useAxios();
 
   const { data: book = {}, refetch } = useQuery({
@@ -71,6 +71,7 @@ const BookDetails = () => {
         toast.success("Order placed successfully");
         refetch();
         handleClose();
+        navigate("/dashboard/my-orders");
       })
       .catch((error) => {
         console.log(error);
@@ -114,7 +115,6 @@ const BookDetails = () => {
       });
   };
 
-  const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
   const handleOrder = () => {
@@ -275,6 +275,15 @@ const BookDetails = () => {
                           </button>
                         </div>
                         <p>User Rating: {rating}</p>
+                        <div className="ml-auto flex flex-col sm:flex-row items-center gap-2 text-yellow-500 font-semibold">
+                          <span>Average Rating:</span>
+                          <Rating
+                            name="half-rating-read"
+                            value={Number(avaRating)}
+                            precision={0.5}
+                            readOnly
+                          />
+                        </div>
                       </div>
                     </form>
                   ) : (

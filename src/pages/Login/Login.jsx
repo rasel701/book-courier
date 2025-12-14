@@ -28,7 +28,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
-        toast.error(error);
+        toast.error(error.message);
       });
   };
 
@@ -46,16 +46,16 @@ const Login = () => {
               console.log(res);
 
               toast.success("Google login successfully !");
-              navigate(location?.state);
+              navigate(location?.state || "/");
               console.log(res.data);
             })
             .catch((error) => {
-              toast.error(error);
+              toast.error(error.message);
             });
         }
       })
       .catch((error) => {
-        toast.error(error);
+        toast.error(error.message);
       });
   };
 

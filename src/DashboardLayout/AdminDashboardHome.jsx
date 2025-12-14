@@ -1,9 +1,14 @@
 import React from "react";
+import AdminSummaryData from "../Components/AdminSummaryData";
+import AdminOrderStatus from "../Components/AdminOrderStatus";
 
 const AdminDashboardHome = () => {
   return (
     <div>
-      <h2>This is a admin dashboar home page</h2>
+      <AdminSummaryData />
+      <div className="p-6 space-y-8">
+        <AdminOrderStatus />
+      </div>
     </div>
   );
 };
