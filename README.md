@@ -1,7 +1,7 @@
 # BookCourier Service Center 
 
 ## Project Purpose
-This project displays available BookCourier delivery service centers on an interactive map using React and Leaflet. Users can view service locations, click on markers, and get quick information about each delivery center.
+BookCourier is an online platform that allows users to browse, order, and purchase books conveniently. Users can view available delivery service centers on an interactive map, place book orders, make payments securely, and provide ratings and reviews for the books they purchase. The platform aims to provide a fast, reliable, and user-friendly book delivery experience.
 
 ## Live URL
 link (https://voluble-mousse-d75057.netlify.app/)
