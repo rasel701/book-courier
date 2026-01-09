@@ -8,9 +8,7 @@ const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(loading);
-
-  console.log(location);
+ 
   if (loading) {
     return <Loading />;
   }

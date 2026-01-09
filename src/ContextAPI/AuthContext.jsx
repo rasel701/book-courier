@@ -26,7 +26,7 @@ const AuthContext = ({ children }) => {
     return () => unSubscribe(); // cleanup
   }, []);
 
-  console.log(user);
+
 
   const registerUser = (email, password) => {
     setLoading(true);

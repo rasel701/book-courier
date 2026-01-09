@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 const AddBook = () => {
   const { user } = useContext(UserAuthContext);
   const { role } = useRole();
-  console.log(role);
+  
 
   const axiosSecure = useAxiosSecure();
 
@@ -42,7 +42,7 @@ const AddBook = () => {
       librarianId: role?._id,
       createdAt: new Date(),
     };
-    console.log(bookInfo);
+    
 
     const res = await axiosSecure.post("/book-add", bookInfo);
 

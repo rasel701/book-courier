@@ -9,7 +9,7 @@ import useAxios from "../../Hooks/useAxios";
 const Register = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+  
   const { registerUser, updateUser, setUser, googleLogin } =
     useContext(UserAuthContext);
   const axiosInstance = useAxios();
@@ -30,39 +30,39 @@ const Register = () => {
       return;
     }
 
-    console.log("User Data:", { email, name, password, photo });
+  
     registerUser(email, password)
       .then((res) => {
         const currentUser = res.user;
         updateUser(name, photo)
           .then(() => {
-            console.log(res.user);
+            
             if (currentUser) {
               setUser({ ...currentUser, displayName: name, photoURL: photo });
               toast.success("User Register Successfully");
               axiosInstance
                 .post("/users", { displayName: name, email, photoURL: photo })
                 .then((res) => {
-                  console.log(res);
+              
                   if (res.data.insertedId) {
                     navigate(location?.state || "/");
                     e.target.reset();
-                    console.log(res.data);
+                  
                   }
                 })
                 .catch((error) => {
-                  console.log(error);
+                
                   toast.error(error.message);
                 });
             }
           })
           .catch((error) => {
-            console.log(error);
+            
             toast.error(error.message);
           });
       })
       .catch((error) => {
-        console.log(error);
+    
         toast.error(error.message);
       });
   };
@@ -71,9 +71,9 @@ const Register = () => {
     googleLogin()
       .then((res) => {
         if (res.user) {
-          console.log(res);
+  
           setUser(res.user);
-          console.log(res.user);
+          
           axiosInstance
             .post("/users", {
               displayName: res.user.displayName,
@@ -81,11 +81,11 @@ const Register = () => {
               photoURL: res.user.photoURL,
             })
             .then((res) => {
-              console.log(res);
+          
 
               toast.success("Google login successfully !");
               navigate(location?.state || "/");
-              console.log(res.data);
+              
             })
             .catch((error) => {
               toast.error(error.message);

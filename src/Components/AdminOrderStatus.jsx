@@ -52,7 +52,7 @@ const AdminOrderStatus = () => {
     },
   ];
 
-  console.log(chartData);
+  
 
   return (
     <div>

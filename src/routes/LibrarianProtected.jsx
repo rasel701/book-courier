@@ -7,7 +7,7 @@ const LibrarianProtected = ({ children }) => {
   const { role, isLoading } = useRole();
   const { loading } = useContext(UserAuthContext);
 
-  console.log(loading + " " + role.role);
+ 
 
   if (isLoading || loading) {
     return <Loading />;

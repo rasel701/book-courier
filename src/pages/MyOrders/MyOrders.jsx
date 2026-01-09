@@ -121,7 +121,7 @@ const MyOrders = () => {
     },
   ];
 
-  console.log(myorders);
+ 
 
   const rows = myorders.map((item, index) => ({
     id: index + 1,
@@ -136,7 +136,7 @@ const MyOrders = () => {
   }));
 
   const handleCancel = (orderItem) => {
-    console.log("Cancel Order:", orderItem);
+  
     axiosSecure
       .patch(`/book-order-cancel/${orderItem.orderId}`)
       .then((res) => {
@@ -151,11 +151,11 @@ const MyOrders = () => {
   };
 
   const handlePayNow = (orderItem) => {
-    console.log("Pay Now for:", orderItem);
+    
     axiosSecure
       .post("/create-checkout-session", orderItem)
       .then((res) => {
-        console.log(res.data);
+        
         window.location.assign(res.data.url);
       })
       .catch((error) => {

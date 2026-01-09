@@ -6,7 +6,7 @@ import Loading from "../Components/Loading";
 
 const MainRoot = () => {
   const navigation = useNavigation();
-  console.log(navigation);
+
   return (
     <div className="max-w-[90%] mx-auto">
       <Navber />

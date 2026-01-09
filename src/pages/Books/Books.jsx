@@ -18,7 +18,7 @@ const Books = () => {
 
   const bookData = books.filter((bookItem) => bookItem.status === "published");
 
-  console.log(search);
+
 
   return (
     <div>

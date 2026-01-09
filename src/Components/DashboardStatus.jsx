@@ -17,7 +17,7 @@ const DashboardStatus = () => {
     queryKey: ["librarian-book", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/librarian-book/${user?.email}`);
-      console.log(res.data);
+    
       return res.data;
     },
   });

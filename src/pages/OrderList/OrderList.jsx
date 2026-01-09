@@ -162,7 +162,7 @@ const OrderList = () => {
 
   const handleChange = async (e, bookInfo) => {
     const newStatus = e.target.value;
-    console.log(newStatus);
+    
 
     const res = await axiosSecure.patch(
       `/book-order-status/${bookInfo.orderId}?status=${newStatus}`
@@ -171,11 +171,11 @@ const OrderList = () => {
       toast.success("Order status updated!");
       refetch();
     }
-    console.log(res.data);
+    
   };
 
   const handleCancelOreder = async (bookInfo) => {
-    console.log(bookInfo);
+    
 
     const confirm = await Swal.fire({
       title: "Are you sure?",
@@ -190,7 +190,7 @@ const OrderList = () => {
     const res = await axiosSecure.patch(
       `/book-order-cancel/${bookInfo.orderId}`
     );
-    console.log(res.data);
+    
     if (res.data.modifiedCount > 0) {
       Swal.fire({
         title: "Cancelled!",

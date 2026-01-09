@@ -101,7 +101,7 @@ const ManageBooks = () => {
 
   const handleStageChangeBtn = async (bookItem) => {
     const res = await axiosSecure.patch(`/books/${bookItem.bookId}`, bookItem);
-    console.log(res.data);
+    
     if (res.data.modifiedCount > 0) {
       refetch();
     }
@@ -109,7 +109,7 @@ const ManageBooks = () => {
 
   const handleDeleteBtn = async (bookInfo) => {
     const res = await axiosSecure.delete(`/book-delete/${bookInfo.bookId}`);
-    console.log(res.data);
+  
     refetch();
   };
 

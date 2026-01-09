@@ -22,12 +22,12 @@ const MyBook = () => {
     queryKey: ["librarian-book", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/librarian-book/${user?.email}`);
-      console.log(res.data);
+   
       return res.data;
     },
   });
 
-  console.log(librarianBooks);
+
 
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
@@ -103,7 +103,7 @@ const MyBook = () => {
 
   const handleStageChangeBtn = async (bookItem) => {
     const res = await axiosSecure.patch(`/books/${bookItem.bookId}`, bookItem);
-    console.log(res.data);
+    
     if (res.data.modifiedCount > 0) {
       refetch();
     }

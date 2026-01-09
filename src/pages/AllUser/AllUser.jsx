@@ -122,7 +122,7 @@ const AllUser = () => {
   }));
 
   const handleChangUser = async (userInfo, role) => {
-    console.log(userInfo, role);
+    
     const result = await Swal.fire({
       title: "Are you sure?",
       text: `Change role of ${userInfo.userName} to ${role}?`,

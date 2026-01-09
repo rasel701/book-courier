@@ -16,10 +16,10 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log({ email, password });
+    
     loginUser(email, password)
       .then((res) => {
-        console.log(res.user);
+      
         if (res.user) {
           toast.success("User login successfully");
           e.target.reset();
@@ -27,7 +27,7 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+      
         toast.error(error.message);
       });
   };
@@ -43,11 +43,11 @@ const Login = () => {
               photoURL: res.user.photoURL,
             })
             .then((res) => {
-              console.log(res);
+            
 
               toast.success("Google login successfully !");
               navigate(location?.state || "/");
-              console.log(res.data);
+            
             })
             .catch((error) => {
               toast.error(error.message);

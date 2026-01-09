@@ -20,13 +20,13 @@ const useAxiosSecure = () => {
         return res;
       },
       (error) => {
-        console.log(error.status);
+      
         const statusCode = error.status;
         if (statusCode === 401 || statusCode === 403) {
           logoutUser()
             .then(() => {})
             .catch((error) => {
-              console.log(error);
+            
             });
         }
         return Promise.reject(error);

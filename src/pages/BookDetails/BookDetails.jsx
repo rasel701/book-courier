@@ -72,7 +72,7 @@ const BookDetails = () => {
     axiosInstance
       .post("/book-order", orderDetails)
       .then((res) => {
-        console.log(res);
+        
         toast.success("Order placed successfully");
         refetch();
         handleClose();
@@ -115,13 +115,13 @@ const BookDetails = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        
         toast.error(error.response.data.message);
       });
   };
 
   const location = useLocation();
-  console.log(location);
+  
   const handleOrder = () => {
     if (!user) {
       toast.error("Please login in");

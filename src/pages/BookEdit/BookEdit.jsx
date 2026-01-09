@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const BookEdit = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
-  console.log(id);
+  
   const { data: book = {}, refetch } = useQuery({
     queryKey: ["book", id],
     queryFn: async () => {
@@ -15,7 +15,7 @@ const BookEdit = () => {
       return res.data;
     },
   });
-  console.log(book);
+  
 
   const handleEditBook = async (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const BookEdit = () => {
       description,
       category,
     };
-    console.log(bookInfo);
+    
 
     const res = await axiosSecure.patch(`/book-edit/${id}`, bookInfo);
     if (res.data.modifiedCount > 0) {

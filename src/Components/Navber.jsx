@@ -10,12 +10,12 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { toast } from "react-toastify";
 import { ThemeContext } from "../ContextAPI/ThemeProvider";
 import logo from "../assets/book-courier-logo-imag.png";
+import InfoIcon from "@mui/icons-material/Info";
+import ContactEmergencyIcon from "@mui/icons-material/ContactEmergency";
 
 const Navber = () => {
   const { user, logoutUser } = useContext(UserAuthContext);
   const { theme, toggleTheme } = useContext(ThemeContext);
-
-  console.log(user);
 
   const [checked, setChecked] = useState(theme === "dark");
 
@@ -47,13 +47,31 @@ const Navber = () => {
           <span className="text-lg">Books</span>
         </NavLink>
       </li>
-
       <li>
-        <NavLink to={"/dashboard"}>
-          <DashboardIcon color="success" />
-          <span className="text-lg">Dashboard</span>
+        <NavLink to={"/about"}>
+          <InfoIcon color="success" />
+          <span className="text-lg">About</span>
         </NavLink>
       </li>
+
+      <li>
+        <NavLink to={"/contact"}>
+          <ContactEmergencyIcon color="success" />
+          <span className="text-lg">Contact</span>
+        </NavLink>
+      </li>
+
+      {user && (
+        <>
+          <li>
+            <NavLink to={"/dashboard"}>
+              <DashboardIcon color="success" />
+              <span className="text-lg">Dashboard</span>
+            </NavLink>
+          </li>
+        </>
+      )}
+
       <li>
         <label className="inline-flex items-center relative">
           <input

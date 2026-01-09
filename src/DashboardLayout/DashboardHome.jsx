@@ -7,7 +7,7 @@ import Loading from "../Components/Loading";
 
 const DashboardHome = () => {
   const { role, isLoading } = useRole();
-  console.log(role.role);
+  
   if (isLoading) {
     return <Loading />;
   }
