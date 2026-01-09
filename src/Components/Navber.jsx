@@ -114,7 +114,7 @@ const Navber = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-lg dark:bg-white dark:text-black dark:rounded-lg ">
+      <div className="navbar bg-secondary shadow-lg  dark:rounded-lg ">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -140,14 +140,14 @@ const Navber = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100  rounded-box z-50 mt-5 w-52 p-2 shadow "
+              className="menu menu-sm dropdown-content bg-base-100  rounded-box z-50 mt-5 w-52  shadow "
             >
               {links}
             </ul>
           </div>
           <div>
             <img
-              className="md:w-20 md:h-20 rounded-full object-cover w-[50px]"
+              className="md:w-20 md:h-16 rounded-full object-center w-[50px]"
               src={logo}
               alt=""
             />

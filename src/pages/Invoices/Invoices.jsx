@@ -15,7 +15,7 @@ const Invoices = () => {
       return res.data;
     },
   });
-
+  console.log(paymentInfo);
 
   return (
     <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 dark:bg-base-200">

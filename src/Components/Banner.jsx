@@ -25,7 +25,7 @@ import { Link } from "react-router";
 const Banner = () => {
   const banners = [bookCourier1, bookCourier2, bookCourier3];
   return (
-    <div>
+    <div className="rounded-lg">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -38,7 +38,7 @@ const Banner = () => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
+        className="mySwiper rounded-lg my-2"
       >
         {banners.map((banner, index) => (
           <SwiperSlide key={index}>
@@ -47,7 +47,7 @@ const Banner = () => {
               src={banner}
               alt=""
             />
-            <div className="absolute inset-0 flex flex-col justify-center items-center px-10  bg-opacity-30 text-black">
+            <div className="absolute inset-0 flex flex-col justify-center items-center px-10  bg-opacity-30 text-black ">
               <h2 className="text-5xl font-bold mb-4 text-center">
                 Welcome to Our Bookstore
               </h2>

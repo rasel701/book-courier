@@ -3,6 +3,8 @@ import { UserAuthContext } from "../ContextAPI/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../Hooks/useAxios";
 import Loading from "../Components/Loading";
+import UserStatusCard from "../Components/UserStatusCard";
+import UserStatusChart from "../Components/UserStatusChart";
 
 const UserDashboardHome = () => {
   const { user } = useContext(UserAuthContext);
@@ -35,15 +37,12 @@ const UserDashboardHome = () => {
       <div className="text-center py-20 text-red-500 font-semibold text-xl">
         Error fetching books. Please try again later.
       </div>
-      
     );
   }
 
-  const hane =()=>{
-    refetch()
-  }
-
-  
+  const hane = () => {
+    refetch();
+  };
 
   return (
     <div>
@@ -55,8 +54,12 @@ const UserDashboardHome = () => {
           Get a quick overview of your library activities.
         </p>
       </div>
+      <div>
+        <UserStatusCard />
+        <UserStatusChart />
+      </div>
 
-      <section className="py-16 bg-gray-100">
+      {/* <section className="py-16 bg-gray-100">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-8 text-gray-800">
             Free English Books
@@ -102,7 +105,7 @@ const UserDashboardHome = () => {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

@@ -18,8 +18,6 @@ const Books = () => {
 
   const bookData = books.filter((bookItem) => bookItem.status === "published");
 
-
-
   return (
     <div>
       <div className="flex justify-center my-16">
@@ -54,7 +52,7 @@ const Books = () => {
       {isLoading && <Loading />}
 
       {bookData.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5 gap-x-5 my-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-5 gap-x-5 my-8">
           {bookData?.map((book) => (
             <Book key={book._id} book={book}></Book>
           ))}
