@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardStatus from "../Components/DashboardStatus";
 import OrderStatusChart from "../Components/OrderStatusChart";
+import DailyOrder from "../Components/DailyOrder";
 
 const LibrarianDashboardHome = () => {
   return (

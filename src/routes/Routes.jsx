@@ -25,6 +25,8 @@ import AdminProtected from "./AdminProtected";
 import LibrarianProtected from "./LibrarianProtected";
 import Loading from "../Components/Loading";
 import UserProtect from "./UserProtect";
+import About from "../pages/About/About";
+import Contact from "../pages/Contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
       {
         path: "/book-details/:id",
         element: <BookDetails />,
+      },
+      {
+        path: "/about",
+        Component: About,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
       },
     ],
   },
