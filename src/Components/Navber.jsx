@@ -67,12 +67,20 @@ const Navber = () => {
         </NavLink>
       </li>
       {user && (
-        <li>
-          <NavLink to={"/dashboard"} className={navLinkStyles}>
-            <DashboardIcon fontSize="small" />
-            <span>Dashboard</span>
-          </NavLink>
-        </li>
+        <>
+          <li>
+            <NavLink to={"/dashboard"} className={navLinkStyles}>
+              <DashboardIcon fontSize="small" />
+              <span>Dashboard</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/free-books"} className={navLinkStyles}>
+              <BookIcon fontSize="small" />
+              <span>Free Books</span>
+            </NavLink>
+          </li>
+        </>
       )}
     </>
   );

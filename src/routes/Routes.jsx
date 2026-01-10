@@ -27,6 +27,7 @@ import Loading from "../Components/Loading";
 import UserProtect from "./UserProtect";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
+import FreeBooks from "../pages/FreeBooks/FreeBooks";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,14 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         Component: Contact,
+      },
+      {
+        path: "/free-books",
+        element: (
+          <ProtectedRoute>
+            <FreeBooks />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

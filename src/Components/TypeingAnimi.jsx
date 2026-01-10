@@ -4,7 +4,7 @@ import { Typewriter } from "react-simple-typewriter";
 const TypeingAnimi = () => {
   return (
     <div>
-      <div className="text-center py-20 bg-gray-100">
+      <div className="text-center py-20 bg-gray-100 rounded-lg">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
           <Typewriter
             words={[

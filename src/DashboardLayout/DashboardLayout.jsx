@@ -223,7 +223,6 @@ const DashboardLayout = () => {
   const location = useLocation();
   const { user } = useContext(UserAuthContext);
 
-  // Active link check করার জন্য helper function
   const isActive = (path) =>
     location.pathname === path
       ? "bg-primary text-white shadow-lg"

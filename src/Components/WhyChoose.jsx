@@ -35,12 +35,12 @@ const WhyChoose = () => {
 
   return (
     <div>
-      <div className="py-20 bg-gray-100 dark:bg-gray-900 my-25">
+      <div className="py-20 bg-primary my-25 rounded-lg">
         <h2
           data-aos="fade-up"
           className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white"
         >
-          Why Choose <span className="text-blue-500">BookCourier?</span>
+          Why Choose <span className="text-blue-700">BookCourier?</span>
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto px-5">

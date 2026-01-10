@@ -15,7 +15,7 @@ const CTASection = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+    <section className="py-20 bg-primary text-white rounded-lg">
       <div className="max-w-6xl mx-auto text-center px-6">
         <h2 className="text-4xl font-bold mb-4" data-aos="fade-up">
           Ready to Explore More Books?
@@ -39,9 +39,11 @@ const CTASection = () => {
             Subscribe to Newsletter
           </button>
 
-          <button className="px-8 py-3 bg-yellow-400 text-gray-900 font-semibold rounded-lg shadow-lg hover:bg-yellow-500 transition">
-            Shop Now
-          </button>
+          <Link to={"/books"}>
+            <button className="px-8 py-3 bg-yellow-400 text-gray-900 font-semibold rounded-lg shadow-lg hover:bg-yellow-500 transition">
+              Shop Now
+            </button>
+          </Link>
 
           <Link to={"/login"}>
             <button className="px-8 py-3 bg-black text-white font-semibold rounded-lg shadow-lg hover:bg-gray-900 transition">
