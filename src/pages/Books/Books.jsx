@@ -3,15 +3,15 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Book from "../../Components/Book";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
+import useAxios from "../../Hooks/useAxios";
 
 const Books = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxios();
 
   const [filter, setFilter] = useState({
     category: "all",
@@ -23,14 +23,14 @@ const Books = () => {
     page: 1,
   });
 
-  const perePage = 5;
+  const perePage = 8;
 
   const { data: books = [], isLoading } = useQuery({
     queryKey: ["books", filter.search, filter.category, filter.price],
 
     queryFn: async () => {
-      const res = await axiosSecure.get(
-        `http://localhost:3000/all-books?search=${filter.search}&category=${filter.category}&price=${filter.price}`
+      const res = await axiosInstance.get(
+        `/all-books?search=${filter.search}&category=${filter.category}&price=${filter.price}`
       );
 
       return res.data;

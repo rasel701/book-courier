@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useRef } from "react";
-import axios from "axios";
 import ReactECharts from "echarts-for-react";
+import useAxios from "../Hooks/useAxios";
 
 const PopularBooksChart = () => {
   const chartRef = useRef(null);
-
+  const axiosInstance = useAxios();
   const { data: popularBooks = [], isLoading } = useQuery({
     queryKey: ["popularBooks"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/user-popular-books");
+      const res = await axiosInstance.get("/user-popular-books");
       return res.data;
     },
   });

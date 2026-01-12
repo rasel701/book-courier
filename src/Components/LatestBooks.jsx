@@ -3,7 +3,6 @@ import useAxios from "../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import Book from "./Book";
 import Loading from "./Loading";
-import axios from "axios";
 
 const LatestBooks = () => {
   const axiosInstance = useAxios();
@@ -11,8 +10,7 @@ const LatestBooks = () => {
   const { data: books = [], isLoading } = useQuery({
     queryKey: ["books"],
     queryFn: async () => {
-      // const res = await axiosInstance.get(`/books`);
-      const res = await axios("http://localhost:3000/books");
+      const res = await axiosInstance.get(`/books`);
       return res.data;
     },
   });
@@ -23,7 +21,7 @@ const LatestBooks = () => {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gray-500 text-center my-12">
+      <h2 className="text-3xl font-bold text-gray-500 text-center my-18">
         Latest Books Section
       </h2>
 

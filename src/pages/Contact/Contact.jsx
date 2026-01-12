@@ -9,10 +9,12 @@ import SendIcon from "@mui/icons-material/Send";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import axios from "axios";
+
 import { toast } from "react-toastify";
+import useAxios from "../../Hooks/useAxios";
 
 const Contact = () => {
+  const axiosInstance = useAxios();
   const handleMessageSend = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -25,10 +27,7 @@ const Contact = () => {
       subject,
       message,
     };
-    const res = await axios.post(
-      "http://localhost:3000/contact-messages",
-      data
-    );
+    const res = await axiosInstance.post("/contact-messages", data);
     if (res?.data.acknowledged) {
       toast.success("Message sent successfully!");
       e.target.reset();

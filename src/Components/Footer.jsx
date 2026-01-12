@@ -5,6 +5,7 @@ import { SiX } from "react-icons/si";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Link } from "react-router";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,12 +18,10 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-[#0F172A] text-gray-300 pt-20 pb-10 overflow-hidden">
-      {/* Background Decorative Element */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-30"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand/About Section */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -57,7 +56,6 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Quick Links */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -69,22 +67,28 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-4">
-              {["Home", "About Us", "Books", "Blog", "Contact"].map((item) => (
+              {["Home", "About ", "Books", "Contact"].map((item) => (
                 <li key={item}>
-                  <motion.a
-                    href={`/${item.toLowerCase().replace(" ", "")}`}
-                    whileHover={{ x: 8 }}
-                    className="hover:text-indigo-400 transition-colors flex items-center gap-2 group"
+                  <Link
+                    to={
+                      item === "Home"
+                        ? "/"
+                        : `/${item.replace(/\s+/g, "").toLowerCase()}`
+                    }
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                    {item}
-                  </motion.a>
+                    <motion.button
+                      whileHover={{ x: 8 }}
+                      className="hover:text-indigo-400 transition-colors flex items-center gap-2 group"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                      {item}
+                    </motion.button>
+                  </Link>
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Contact Details */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -105,7 +109,7 @@ const Footer = () => {
                   className="text-indigo-500 group-hover:scale-110 transition-transform"
                   fontSize="small"
                 />
-                <span className="break-all">rasel70821185@gmail.com</span>
+                <span className="break-all">rasel708211@gmail.com</span>
               </a>
               <a
                 href="tel:+8801577031291"
@@ -124,7 +128,6 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Newsletter/Small CTA */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -169,7 +172,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Abstract Background Blur */}
       <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-600/10 rounded-full blur-[100px]"></div>
     </footer>
   );

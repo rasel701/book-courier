@@ -12,17 +12,16 @@ import {
   TrendingUp,
   CheckCircle,
 } from "lucide-react";
+import useAxios from "../Hooks/useAxios";
 
 const UserStatusCard = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxios();
   const { user } = useContext(UserAuthContext);
 
   const { data: myordersStatus = [], isLoading } = useQuery({
     queryKey: ["status", user?.email],
     queryFn: async () => {
-      const res = await axios(
-        `http://localhost:3000/user-status/${user?.email}`
-      );
+      const res = await axiosInstance.get(`/user-status/${user?.email}`);
       return res.data;
     },
     enabled: !!user?.email,
